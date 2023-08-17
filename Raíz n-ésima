@@ -1,0 +1,22 @@
+#Estimación de la raíz n-ésima de un número
+#Alvaro
+
+print(f"Se calculará la raíz n-ésima de un número con margen de error de {10**(-14)}. Es importante recordar que los números negativos no tienen raíz par en variable real.\nSi el usuario introduce un radicando negativo y un radical par, entonces el sistema arrojará un resultado erróneo.")
+
+a = float(input("Por favor introduce el radicando: "))
+r = int(input("Por favor introduce el radical: "))
+centinela = 1
+x = (a-abs(a))/2
+y = (a+abs(a))/2
+while (abs(x - y) > 10**(-14)):
+  print(f"Paso {centinela}")
+  print((y + x)/2)
+  if (((y + x)/2)**r - a > 0):
+    y = (y + x)/2
+  if  (((y + x)/2)**r - a < 0):
+    x = (y + x)/2
+
+  centinela += 1
+print(f"Paso {centinela}")
+print((y + x)/2)
+print(f"{chr(27)}[{1};{30};{43}m         El resultado obtenido después de {centinela} iteraciones es {(y + x)/2}         {chr(27)}[0m",end= "")
